@@ -1,0 +1,123 @@
+/* 
+
+    Product Component Styling
+
+
+*/
+.product {
+
+    background-color: white;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    box-shadow: 2px 2px 5px darkgray;
+}
+
+/* 
+
+    Product Header Styling
+
+*/
+.header {
+    position: relative;
+}
+
+/* 
+
+    Header Discount Box
+
+*/
+
+.discount {
+    text-align: center;
+    color: #fff;
+    min-width: 100px;
+    min-height: 60px;
+
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-pink);
+    border-radius: 15px;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+}
+
+.discountText {
+    font-size: 18px;
+    line-height: 18px;
+    
+}
+
+.discountPercent {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+
+
+/* 
+
+    Product Image Styling
+
+*/
+.product img{
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid var(--color-pink);
+    object-fit: cover;
+}
+
+
+
+/* 
+
+    Product Body Styling "Footer"
+
+*/
+.body {
+
+    padding : 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 120px;
+}
+
+.title {
+    font-size: 22px;
+    min-height: 55px;
+  
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0 10px 0;
+}
+
+.price {
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.btn {
+
+    background-color: var(--color-black);
+    border : 0;
+    padding: 6px 10px;
+    border-radius: 40px;
+    font-size: 16px;
+    line-height: 12px;
+    color: #fff;
+    margin-left : 5px;
+}

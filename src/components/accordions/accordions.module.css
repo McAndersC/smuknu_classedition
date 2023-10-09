@@ -1,0 +1,17 @@
+.accordion {
+    border : 1px red solid;
+}
+
+.accordion .question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion .answer {
+    display: none;
+}
+
+.accordion.active .answer {
+    display: block;
+}
