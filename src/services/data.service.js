@@ -3,7 +3,7 @@ let productData = []
 
 export const getProductData = async () => {
     
-    const url = 'https://smuknu.webmcdm.dk/products';
+    const url = '/api/products';
     const response = await fetch(url);
     const data = await response.json();
     productData = data;

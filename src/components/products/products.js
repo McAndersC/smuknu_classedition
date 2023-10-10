@@ -4,13 +4,11 @@ import Product from "./product";
 import {useState, useEffect} from 'react';
 import styles from './products.module.css';
 
-const Products = ({recommended}) => {
+const Products = ({recommended, headline}) => {
 
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-
-        console.log('recommended vi kører igen', recommended)
 
       const getData = async () => {
 
@@ -28,9 +26,14 @@ const Products = ({recommended}) => {
     }, [recommended])
 
 
-    return <div className={styles.products}>
+    return <div className={styles.products} id="selected">
 
-
+        <div className={styles.header}>
+            <h2>
+              <span style={{color : headline.lineOne.color}}>{headline.lineOne.text} </span>
+              <span style={{color : headline.lineTwo.color}}>{headline.lineTwo.text}</span>
+            </h2>
+        </div>
         {products.map((product) => {
 
             return <Product key={product._id} product={product}></Product>
