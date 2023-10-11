@@ -67,3 +67,22 @@ export async function GET() {
 
 
 }
+
+export async function POST(request) {
+
+
+    let body = await request.json()
+    await dbConnect();
+
+    return reviewModel.create(body).then( (doc) => {
+
+        return NextResponse.json(doc)
+
+    })
+    
+
+
+
+
+
+}
