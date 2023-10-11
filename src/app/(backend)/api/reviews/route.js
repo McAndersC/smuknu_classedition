@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 let reviewsMockData = [
     {
         "_id": "641ef53c979a9b182b0bfef4",
-        "name": "Phoebe Larsen",
+        "name": "Anders Larsen",
         "byline": "Tilfreds Kunde",
         "description": "Jeg døjer rigtig meget med uren hud, og har prøvet alt muligt. Jeg fik Honest produkter anbefalet som en 30 dags kur, hvor jeg KUN skulle bruge den morgen og aften. Det har jeg så prøvet nu, og jeg kan se en tydelig forskel. Et ekstra plus er, at den er dejlig fugtgivende.",
         "image": "https://smuknu.webmcdm.dk/reviews/641ef53c979a9b182b0bfef4.jpg",
@@ -54,17 +54,12 @@ export async function GET() {
 
     await dbConnect();
 
-    /*
+    
     return reviewModel.find({}).then( (doc) => {
 
         return NextResponse.json(doc)
 
     })
-    */
-
-    return NextResponse.json(reviewsMockData);
-
-
 
 }
 
@@ -72,6 +67,8 @@ export async function POST(request) {
 
 
     let body = await request.json()
+
+    console.log(body)
     await dbConnect();
 
     return reviewModel.create(body).then( (doc) => {
