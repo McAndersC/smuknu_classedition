@@ -137,15 +137,40 @@ export const getMenuData = async () => {
         {
             "path" : "/produkter",
             "title" : "Produkter"
-        },  
-        {
-            "path" : "/produkter",
-            "title" : "Produkter1"
-        },  
-        {
-            "path" : "/produkter",
-            "title" : "Produkter2"
         }
     ]
+
+}
+
+export const createProduct = async (product) => {
+
+    return fetch('/api/products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product),
+    }).then((response) => {
+
+        return response.json()
+
+    });
+
+}
+
+export const createReview = async (review) => {
+
+  return fetch('/api/reviews', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(review),
+    
+    }).then((response) => {
+
+        return response.json()
+
+    });
 
 }
