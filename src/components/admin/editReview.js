@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { createReview } from "@/services/data.service";
-
+import styles from "./form.module.css"
 const validationSchema = yup.object().shape({
 
     name: yup.string().required('Name is required'),
@@ -11,8 +11,6 @@ const validationSchema = yup.object().shape({
     description: yup.string().required('Description is required'),
     
 })
-
-
 
 const EditReview = () => {
 
@@ -32,11 +30,11 @@ const EditReview = () => {
 
     }
 
-    return <div>
+    return <div className="admin-page-wrapper">
 
         <h1>Create Review</h1>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 
             <label> Name
                 <input {...register("name")} />

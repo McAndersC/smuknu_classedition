@@ -158,6 +158,22 @@ export const createProduct = async (product) => {
 
 }
 
+export const updateProduct = async (product) => {
+
+    return fetch('/api/products', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product),
+    }).then((response) => {
+
+        return response.json()
+
+    });
+
+}
+
 export const createReview = async (review) => {
 
   return fetch('/api/reviews', {

@@ -2,7 +2,7 @@ import EditReview from "@/components/admin/editReview";
 
 const ReviewPage = () => {
 
-    return <div>
+    return <div className="admin-page-wrapper">
 
         <EditReview></EditReview>
 

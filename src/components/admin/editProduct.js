@@ -1,11 +1,13 @@
 'use client'
 
-import { createProduct } from "@/services/data.service";
+import { createProduct, updateProduct, getProductById } from "@/services/data.service";
 import { useForm } from "react-hook-form";
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Product from "../products/product";
+import styles from "./form.module.css";
+import { get } from "mongoose";
 
 const validationSchema = yup.object().shape({
 
@@ -13,31 +15,73 @@ const validationSchema = yup.object().shape({
 
 })
 
-const EditProduct = () => {
+const EditProduct = ({id}) => {
 
     const [product, setProduct] = useState({
-        title: 'Default Product',
+        title: 'Create new title for Product',
         price: 999,
         recommended: true,
         discountInPercent: 10,
         image: '/products/dummy.jpg'
     });
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         defaultValues : {
-            title: 'My New Product',
-            price: 999,
-            recommended: true,
-            discountInPercent: 10,
-            image: '/products/dummy.jpg'
+            title: product.title,
+            price: product.price,
+            recommended: product.recommended,
+            discountInPercent: product.discountInPercent,
+            image: product.image
         },
         resolver: yupResolver(validationSchema),
     });
 
+    useEffect(() => {
+
+        if(id) {
+
+    
+            getProductById(id).then((data) => {
+          
+                setProduct(data)
+          
+            })  
+        }
+    
+      }, [id])
+    
+      useEffect(() => {
+
+        if(id) {
+            setValue('title', product.title)
+            setValue('price', product.price)
+            setValue('discountInPercent', product.discountInPercent)
+            setValue('image', product.image)
+            setValue('recommended', product.recommended)
+    
+        }
+    
+      }, [product, setValue, id])
+
+
+
+
     const onSubmit = async (data) => {
 
-        console.log(data)
-        // const result = await createProduct(data);
+        console.log(id, data)
+
+        if(id) {
+
+            data._id = id;
+            const result = await updateProduct(data);
+            console.log('UPDATE', result)
+
+        } else {
+
+            const result = await createProduct(data);
+
+        }
+        
 
 
     }
@@ -61,10 +105,9 @@ const EditProduct = () => {
         
         <h1>Edit Product</h1>
 
-        {/* <h2>Product {product.title} - {product.recommended ? 'Anbefalet' : 'Ikke anbefalet'} - {product.price} - {product.image}</h2> */}
         <Product product={product} />
         
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 
             <label> Title
 

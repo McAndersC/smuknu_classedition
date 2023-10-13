@@ -30,3 +30,20 @@ export async function POST(request) {
 
 
 }
+
+export async function PUT(request) {
+
+    let data = await request.json();
+
+    console.log(data)
+
+    await dbConnect();
+
+    return productModel.findOneAndUpdate({_id : data._id}, data).then( (doc) => {
+
+        return NextResponse.json(doc)
+
+    } )
+
+
+}

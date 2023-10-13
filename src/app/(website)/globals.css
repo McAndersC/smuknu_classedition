@@ -77,6 +77,14 @@ a {
 
 }
 
+.admin-page-wrapper {
+
+  padding: 20px;
+
+
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

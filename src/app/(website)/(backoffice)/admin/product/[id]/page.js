@@ -1,10 +1,10 @@
 import EditProduct from "@/components/admin/editProduct";
 
-const ProductPage = () => {
+const ProductPage = ({params}) => {
 
     return <div className="admin-page-wrapper">
 
-        <EditProduct></EditProduct>
+        <EditProduct id={params.id}></EditProduct>
 
     </div>
 
